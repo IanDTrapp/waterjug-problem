@@ -63,32 +63,36 @@ public class WaterJugFunctionFactory {
 	private static class WJResultFunction implements ResultFunction {
 		public Object result(Object s, Action a) {
 			
-			int[] state = (int[]) s;
-			
 			System.out.println("Action: " + a);
 			if (WaterJugBoard.FILL_1.equals(a)) {
-				int[] thisState = WaterJugBoard.fill1(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.fill1();
+				return newJug;
 				
 			} else if (WaterJugBoard.FILL_2.equals(a)) {
-				int[] thisState = WaterJugBoard.fill2(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.fill2();
+				return newJug;
 				
 			} else if (WaterJugBoard.EMPTY_1.equals(a)) {
-				int[] thisState = WaterJugBoard.empty1(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.empty1();
+				return newJug;
 				
 			} else if (WaterJugBoard.EMPTY_2.equals(a)) {
-				int[] thisState = WaterJugBoard.empty2(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.empty2();
+				return newJug;
 				
 			} else if (WaterJugBoard.EMPTY_TO_1.equals(a)) {
-				int[] thisState = WaterJugBoard.emptyTo1(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.emptyTo1();
+				return newJug;
 				
 			} else if (WaterJugBoard.EMPTY_TO_2.equals(a)) {
-				int[] thisState = WaterJugBoard.emptyTo2(state);
-				return thisState;
+				WaterJugBoard newJug = new WaterJugBoard();
+				newJug.emptyTo2();
+				return newJug;
 			}
 
 			//System.out.println("Didnt choose an action");
