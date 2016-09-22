@@ -1,5 +1,6 @@
 package waterjug;
 
+import aima.core.search.uninformed.DepthLimitedSearch;
 import aima.core.search.uninformed.IterativeDeepeningSearch;
 
 import java.util.Iterator;
@@ -24,7 +25,7 @@ public class WaterJugProblem {
 					WaterJugFunctionFactory.getResultFunction(),
 					new WaterJugGoalTest()); 
 			
-			Search search = new IterativeDeepeningSearch();
+			Search search = new DepthLimitedSearch(3);
 			SearchAgent agent = new SearchAgent(problem, search);
 
 			System.out.println();

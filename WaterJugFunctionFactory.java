@@ -35,24 +35,25 @@ public class WaterJugFunctionFactory {
 
 			Set<Action> actions = new LinkedHashSet<Action>();
 
-			if (jugs[0] <= 4) {
-				actions.add(WaterJug.FILL_1);
-			}
-			if (jugs[1] <= 3) {
-				actions.add(WaterJug.FILL_2);
-			}
-			if (jugs[0] != 0) {
-				actions.add(WaterJug.EMPTY_1);
-			}
-			if (jugs[1] != 0) {
-				actions.add(WaterJug.EMPTY_2);
-			}
-			if(jugs[0] > 0 && jugs[1] < 3) {
-				actions.add(WaterJug.EMPTY_TO_2);
-			}
-			if(jugs[1] > 0 && jugs[0] < 4) {
-				actions.add(WaterJug.EMPTY_TO_1);
-			}
+		
+				if(jugs[0] < 4) {
+					actions.add(WaterJugBoard.FILL_1);
+				}
+				if(jugs[1] < 3) {
+					actions.add(WaterJugBoard.FILL_2);
+				}
+				if(jugs[0] > 0) {
+					actions.add(WaterJugBoard.EMPTY_1);
+				}
+				if(jugs[1] > 0) {
+					actions.add(WaterJugBoard.EMPTY_2);
+				}
+				if(jugs[0] != 0) {
+					actions.add(WaterJugBoard.EMPTY_TO_2);
+				}
+				if(jugs[1] != 0) {
+					actions.add(WaterJugBoard.EMPTY_TO_1);
+				}
 			
 			
 			return actions;
@@ -64,32 +65,33 @@ public class WaterJugFunctionFactory {
 			
 			int[] state = (int[]) s;
 			
-			if (WaterJug.FILL_1.equals(a)) {
-				int[] thisState = WaterJug.fill1(state);
+			System.out.println("Action: " + a);
+			if (WaterJugBoard.FILL_1.equals(a)) {
+				int[] thisState = WaterJugBoard.fill1(state);
 				return thisState;
 				
-			} else if (WaterJug.FILL_2.equals(a)) {
-				int[] thisState = WaterJug.fill2(state);
+			} else if (WaterJugBoard.FILL_2.equals(a)) {
+				int[] thisState = WaterJugBoard.fill2(state);
 				return thisState;
 				
-			} else if (WaterJug.FILL_1.equals(a)) {
-				int[] thisState = WaterJug.empty1(state);
+			} else if (WaterJugBoard.EMPTY_1.equals(a)) {
+				int[] thisState = WaterJugBoard.empty1(state);
 				return thisState;
 				
-			} else if (WaterJug.FILL_2.equals(a)) {
-				int[] thisState = WaterJug.empty2(state);
+			} else if (WaterJugBoard.EMPTY_2.equals(a)) {
+				int[] thisState = WaterJugBoard.empty2(state);
 				return thisState;
 				
-			} else if (WaterJug.EMPTY_TO_1.equals(a)) {
-				int[] thisState = WaterJug.emptyTo1(state);
+			} else if (WaterJugBoard.EMPTY_TO_1.equals(a)) {
+				int[] thisState = WaterJugBoard.emptyTo1(state);
 				return thisState;
 				
-			} else if (WaterJug.EMPTY_TO_2.equals(a)) {
-				int[] thisState = WaterJug.emptyTo2(state);
+			} else if (WaterJugBoard.EMPTY_TO_2.equals(a)) {
+				int[] thisState = WaterJugBoard.emptyTo2(state);
 				return thisState;
-				
 			}
 
+			//System.out.println("Didnt choose an action");
 			// The Action is not understood or is a NoOp
 			// the result will be the current state.
 			return s;
