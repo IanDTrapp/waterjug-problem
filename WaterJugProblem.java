@@ -17,7 +17,7 @@ public class WaterJugProblem {
 	public static void main(String[] args) {
 		System.out.println("\nWater Jugs Iterative DS  -->");
 		
-		int[] initialState = new int[] {0,0};
+		WaterJugBoard initialState = new WaterJugBoard(0,0);
 
 		try {
 			Problem problem = new Problem(initialState,
@@ -25,7 +25,7 @@ public class WaterJugProblem {
 					WaterJugFunctionFactory.getResultFunction(),
 					new WaterJugGoalTest()); 
 			
-			Search search = new DepthLimitedSearch(3);
+			Search search = new DepthLimitedSearch(7);
 			SearchAgent agent = new SearchAgent(problem, search);
 
 			System.out.println();
@@ -43,7 +43,6 @@ public class WaterJugProblem {
 			String property = properties.getProperty(key);
 			System.out.println(key + " : " + property);
 		}
-
 	}
 
 	private static void printActions(List<Action> actions) {

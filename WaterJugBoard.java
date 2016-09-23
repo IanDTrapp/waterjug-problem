@@ -31,11 +31,11 @@ public class WaterJugBoard {
 		return state;
 	}
 	
-	public static int getJug1Val() {
+	public int getJug1Val() {
 		return state[0];
 	}
 	
-	public static int getJug2Val() {
+	public int getJug2Val() {
 		return state[1];
 	}
 	
@@ -94,10 +94,10 @@ public class WaterJugBoard {
 	@Override
 	public boolean equals(Object o) {
 		System.out.println("Equals function: " + o);
-		if(this == o) {
+		WaterJugBoard state = (WaterJugBoard) o;
+		if(state.getJug1Val() == getJug1Val() && state.getJug2Val() == getJug2Val()) {
 			return true;
 		}
-		
 		return false;
 	}
 }

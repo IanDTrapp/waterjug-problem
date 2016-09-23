@@ -31,27 +31,27 @@ public class WaterJugFunctionFactory {
 
 	private static class WJActionsFunction implements ActionsFunction {
 		public Set<Action> actions(Object state) {
-			int[] jugs = (int[]) state;
+			WaterJugBoard jugs = (WaterJugBoard) state;
 
 			Set<Action> actions = new LinkedHashSet<Action>();
 
 		
-				if(jugs[0] < 4) {
+				if(jugs.getJug1Val() < 4) {
 					actions.add(WaterJugBoard.FILL_1);
 				}
-				if(jugs[1] < 3) {
+				if(jugs.getJug2Val() < 3) {
 					actions.add(WaterJugBoard.FILL_2);
 				}
-				if(jugs[0] > 0) {
+				if(jugs.getJug1Val() > 0) {
 					actions.add(WaterJugBoard.EMPTY_1);
 				}
-				if(jugs[1] > 0) {
+				if(jugs.getJug2Val() > 0) {
 					actions.add(WaterJugBoard.EMPTY_2);
 				}
-				if(jugs[0] != 0) {
+				if(jugs.getJug1Val() > 0) {
 					actions.add(WaterJugBoard.EMPTY_TO_2);
 				}
-				if(jugs[1] != 0) {
+				if(jugs.getJug2Val() > 0) {
 					actions.add(WaterJugBoard.EMPTY_TO_1);
 				}
 			
